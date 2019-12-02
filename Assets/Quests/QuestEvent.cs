@@ -10,6 +10,7 @@ public class QuestEvent
 	public string name;
 	public string description;
 	public string id;
+	public int order = -1;
 	public EventStatus status;
 
 	public List<QuestPath> pathlist = new List<QuestPath>();

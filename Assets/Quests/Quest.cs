@@ -38,11 +38,23 @@ public class Quest
 		return null;
 	}
 
+	public void BFS(string id, int orderNumber = 1)
+	{
+		QuestEvent thisEvent = FindQuestEvent(id);
+		thisEvent.order = orderNumber;
+	
+		foreach(QuestPath e in thisEvent.pathlist)
+		{
+			if(e.endEvent.order == -1)
+				BFS(e.endEvent.GetId(), orderNumber +1 );
+		}
+	}
+
 	public void PrintPath()
 	{
 		foreach(QuestEvent n in questEvents)
 		{
-			Debug.Log(n.name);
+			Debug.Log(n.name + " " + n.order);
 		}
 	}
 }
